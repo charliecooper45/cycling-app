@@ -1,0 +1,24 @@
+extends layout
+
+block header
+
+block content
+	.ui.middle.aligned.center.aligned.grid
+		.column
+			h2.ui.teal.header
+				| Road Cycling
+			form.ui.large.form(action="/login", method="POST")
+				.ui.stacked.segment
+					.field
+						.ui.left.icon.input
+							i.user.icon
+							input(name='email', placeholder='Email address')
+					.field
+						.ui.left.icon.input
+							i.lock.icon
+							input(type='password', name='password', placeholder='Password')
+					input.ui.fluid.large.teal.button(type="submit" value="Log In")
+			- const error = locals.flashes['error'] != undefined ? locals.flashes['error'][0] : undefined
+			if error
+				div.ui.error.message= error
+
