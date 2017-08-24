@@ -1,4 +1,6 @@
 const passport = require('passport');
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
 
 exports.loginForm = (req, res) => {
   res.render('login');
@@ -12,7 +14,7 @@ exports.login = passport.authenticate('local', {
 
 exports.logout = (req, res) => {
   req.logout();
-  res.redirect('/');
+  res.redirect('/login');
 };
 
 exports.isLoggedIn = (req, res, next) => {

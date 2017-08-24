@@ -1,9 +1,11 @@
 {
-  "name": "road-cycling",
+  "name": "cycling-app",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./start.js"
+    "start": "nodemon ./start.js",
+    "user": "node ./scripts/add-user.js",
+    "test": "mocha --reporter spec"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -12,6 +14,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "dotenv": "^4.0.0",
+    "es6-promisify": "^5.0.0",
     "express": "~4.15.2",
     "express-session": "^1.15.5",
     "mongoose": "^4.11.7",
@@ -23,6 +26,11 @@
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0",
+    "nodemon": "^1.11.0",
+    "sinon": "^3.2.1",
+    "sinon-mongoose": "^2.0.2",
+    "supertest": "^3.0.0"
   }
 }
