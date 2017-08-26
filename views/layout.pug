@@ -9,6 +9,7 @@ html
       .ui.fixed.inverted.menu
         .ui.container
           a.header.item(href='/') Road Cycling App
+          a.header.item(href='/segments' class=(path.startsWith('/segments') ? 'active' : '')) Segments
           a.header.item.right(href='/logout') Logout
 
     .ui.main.text.container

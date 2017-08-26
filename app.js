@@ -42,6 +42,7 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.flashes = req.flash();
   res.locals.user = req.user || null;
+  res.locals.path = req.path;
   next();
 });
 
