@@ -1,11 +1,12 @@
 const request = require('request-promise');
 
 const accessToken = process.env.STRAVA_ACCESS_TOKEN;
-const stravaSegmentAPI = 'https://www.strava.com/api/v3/segments';
+const stravaAthleteId = process.env.STRAVA_ATHLETE_ID;
+const stravaSegmentApi = 'https://www.strava.com/api/v3/segments';
 
 exports.findStarredSegments = () => {
   var options = {
-    uri: `${stravaSegmentAPI}/starred`,
+    uri: `${stravaSegmentApi}/starred`,
     qs: {
       access_token: accessToken
     },
@@ -14,13 +15,13 @@ exports.findStarredSegments = () => {
   return request(options);
 };
 
-exports.findSegmentEfforts = (segmentId, athleteId) => {
+exports.findSegmentEfforts = (segmentId) => {
   var options = {
-    uri: `${stravaSegmentAPI}/${segmentId}/all_efforts`,
+    uri: `${stravaSegmentApi}/${segmentId}/all_efforts`,
     qs: {
       access_token: accessToken,
       per_page: '10',
-      athlete_id: athleteId
+      athlete_id: stravaAthleteId
     },
     json: true
   };
@@ -29,7 +30,7 @@ exports.findSegmentEfforts = (segmentId, athleteId) => {
 
 exports.findSegment = (segmentId) => {
   var options = {
-    uri: `${stravaSegmentAPI}/${segmentId}`,
+    uri: `${stravaSegmentApi}/${segmentId}`,
     qs: {
       access_token: accessToken
     },

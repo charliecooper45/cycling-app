@@ -1,0 +1,34 @@
+extends layout
+
+block content
+	.two.column.stackable.ui.grid.center
+		.column
+			.ui.two.statistics
+				.statistic
+					.value= stats.longest
+					.label
+						| Longest (mi)
+				.statistic
+					.value= stats.highest
+					.label
+						| Highest (ft)
+				.statistic
+					.value= stats.total_distance
+					.label
+						| Total Distance (mi)
+				.statistic
+					.value= stats.total_climbing
+					.label
+						| Total Climbing (ft)
+				.statistic
+					.value= stats.year_distance
+					.label
+						| Year Distance (mi)
+				.statistic
+					.value= stats.year_climbing
+					.label
+						| Year Climbing (ft)
+		.column
+			.ui.segment
+				p
+				p
