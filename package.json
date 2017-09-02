@@ -2,6 +2,9 @@
   "name": "cycling-app",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "7.6.0"
+  },
   "scripts": {
     "start": "nodemon ./start.js",
     "user": "node ./scripts/add-user.js",
