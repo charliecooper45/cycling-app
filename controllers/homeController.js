@@ -27,7 +27,7 @@ const mapYears = (year) => {
     year: year.year,
     distance: conversionService.formatMiles(year.distance),
     climbing: conversionService.formatFeet(year.climbing),
-    time: `${duration.days()} d ${duration.hours()} h ${duration.minutes()} m`,
+    time: `${duration.days()}d ${duration.hours()}h ${duration.minutes()}m`,
     count: year.count
   };
 };
