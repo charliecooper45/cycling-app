@@ -1,6 +1,4 @@
-const express = require('express');
-const router = express.Router();
-
+const router = require('express').Router();
 const { catchErrors } = require('../handlers/errorHandlers');
 const homeController = require('../controllers/homeController');
 const segmentController = require('../controllers/segmentController');

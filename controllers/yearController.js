@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
+
 const Year = mongoose.model('Year');
 
 exports.createYear = async (req, res) => {
-  await Year.findOneAndUpdate({'year': req.body.year}, req.body, {upsert: true});
+  await Year.findOneAndUpdate({ year: req.body.year }, req.body, { upsert: true });
   req.flash('success', 'Year added');
   res.redirect('/');
 };
 
 exports.deleteYear = async (req, res) => {
-  const year = await Year.findOneAndRemove({'year': req.body.year});
+  const year = await Year.findOneAndRemove({ year: req.body.year });
   if (year) {
     req.flash('success', `Year ${year.year} deleted`);
   } else {

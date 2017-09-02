@@ -8,7 +8,8 @@
   "scripts": {
     "start": "nodemon ./start.js",
     "user": "node ./scripts/add-user.js",
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter spec",
+    "eslint": "eslint **/*.js"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -34,6 +35,9 @@
   },
   "devDependencies": {
     "chai": "^4.1.1",
+    "eslint": "^4.6.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-plugin-import": "^2.7.0",
     "mocha": "^3.5.0",
     "nodemon": "^1.11.0",
     "sinon": "^3.2.1",

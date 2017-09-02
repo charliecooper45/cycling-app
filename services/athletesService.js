@@ -5,7 +5,7 @@ const stravaAthleteId = process.env.STRAVA_ATHLETE_ID;
 const stravaAthletesApi = 'https://www.strava.com/api/v3/athletes';
 
 exports.findAthleteStats = () => {
-  var options = {
+  const options = {
     uri: `${stravaAthletesApi}/${stravaAthleteId}/stats`,
     qs: {
       access_token: accessToken

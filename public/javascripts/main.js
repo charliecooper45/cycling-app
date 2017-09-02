@@ -6,11 +6,11 @@ $('#add-year').click(() => {
 $('#add-year-form')
   .form({
     fields: {
-      year     : ['exactLength[4]' ,'integer'],
-      distance     : ['empty', 'decimal'],
-      climbing     : ['empty', 'decimal'],
-      time     : ['empty', 'decimal'],
-      count     : ['empty', 'integer']
+      year: ['exactLength[4]', 'integer'],
+      distance: ['empty', 'decimal'],
+      climbing: ['empty', 'decimal'],
+      time: ['empty', 'decimal'],
+      count: ['empty', 'integer']
     }
   });
 

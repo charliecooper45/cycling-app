@@ -5,7 +5,7 @@ const stravaAthleteId = process.env.STRAVA_ATHLETE_ID;
 const stravaSegmentApi = 'https://www.strava.com/api/v3/segments';
 
 exports.findStarredSegments = () => {
-  var options = {
+  const options = {
     uri: `${stravaSegmentApi}/starred`,
     qs: {
       access_token: accessToken
@@ -16,7 +16,7 @@ exports.findStarredSegments = () => {
 };
 
 exports.findSegmentEfforts = (segmentId) => {
-  var options = {
+  const options = {
     uri: `${stravaSegmentApi}/${segmentId}/all_efforts`,
     qs: {
       access_token: accessToken,
@@ -29,7 +29,7 @@ exports.findSegmentEfforts = (segmentId) => {
 };
 
 exports.findSegment = (segmentId) => {
-  var options = {
+  const options = {
     uri: `${stravaSegmentApi}/${segmentId}`,
     qs: {
       access_token: accessToken

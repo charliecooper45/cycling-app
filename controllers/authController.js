@@ -1,6 +1,4 @@
 const passport = require('passport');
-const mongoose = require('mongoose');
-const User = mongoose.model('User');
 
 exports.loginForm = (req, res) => {
   res.render('login');
@@ -22,5 +20,5 @@ exports.isLoggedIn = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/login');
+  return res.redirect('/login');
 };

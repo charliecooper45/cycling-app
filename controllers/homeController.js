@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const moment = require('moment');
-const Year = mongoose.model('Year');
-
 const athletesService = require('../services/athletesService');
 const conversionService = require('../services/conversionService');
+
+const Year = mongoose.model('Year');
 
 const mapStats = (stats) => {
   const duration = conversionService.secondsToDuration(stats.ytd_ride_totals.elapsed_time);
@@ -15,10 +15,10 @@ const mapStats = (stats) => {
     year_distance: `${conversionService.metresToMiles(stats.ytd_ride_totals.distance)}`,
     year_distance_decimal: `${conversionService.metresToMiles(stats.ytd_ride_totals.distance, true)}`,
     year_climbing: `${conversionService.metresToFeet(stats.ytd_ride_totals.elevation_gain)}`,
-    year_time: `${duration.days()} d ${duration.hours()} h ${duration.minutes()} m`,
+    year_time: `${duration.days()}d ${duration.hours()}h ${duration.minutes()}m`,
     year_count: `${stats.ytd_ride_totals.count}`,
     year: moment().year()
-  }
+  };
 };
 
 const mapYears = (year) => {
@@ -29,7 +29,7 @@ const mapYears = (year) => {
     climbing: conversionService.formatFeet(year.climbing),
     time: `${duration.days()} d ${duration.hours()} h ${duration.minutes()} m`,
     count: year.count
-  }
+  };
 };
 
 exports.getHome = async (req, res) => {

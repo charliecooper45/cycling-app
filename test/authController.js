@@ -18,7 +18,3 @@ describe('GET /logout', () => {
       .expect(302, done);
   });
 });
-
-
-
-
