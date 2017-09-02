@@ -1,6 +1,3 @@
-const moment = require('moment');
-const numeral = require('numeral');
-
 const segmentService = require('../services/segmentService');
 const conversionService = require('../services/conversionService');
 
@@ -10,17 +7,17 @@ const mapSegments = async (segment) => {
   return {
     title: segment.name,
     distance: `${(conversionService.metresToMiles(segment.distance, true))} miles`,
-    avg: numeral(segment.average_grade/100).format('0.0%'),
-    max: numeral(segment.maximum_grade/100).format('0.0%'),
+    avg: conversionService.formatPercentage(segment.average_grade/100),
+    max: conversionService.formatPercentage(segment.maximum_grade/100),
     count: `${effortCount.athlete_segment_stats.effort_count} efforts`,
     efforts: efforts.map(mapEfforts)
   }
 };
 
 const mapEfforts = (effort) => {
-  const duration = moment.duration(effort.elapsed_time, 'seconds');
+  const duration = conversionService.secondsToDuration(effort.elapsed_time);
   return {
-    date: moment(effort.start_date).format('DD MMMM YYYY'),
+    date: conversionService.formatDate(effort.start_date),
     time: `${duration.minutes()} mins ${duration.seconds()} secs`
   }
 };

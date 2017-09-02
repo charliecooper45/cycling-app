@@ -49,6 +49,7 @@ app.use((req, res, next) => {
 app.use('/', routes);
 
 app.use(errorHandlers.notFound);
+app.use(errorHandlers.validationErrors);
 app.use(errorHandlers.errors);
 
 module.exports = app;

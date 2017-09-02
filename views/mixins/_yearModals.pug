@@ -1,0 +1,41 @@
+mixin addYearModal
+	#add-year-modal.ui.modal
+		i.close.icon
+		.header
+			| Enter year data below
+		.content
+			form(action='/year/' id='add-year-form' method="POST" class='ui form')
+				.field
+					label Year
+					input(name='year', placeholder='Year')
+				.field
+					label Distance (miles)
+					input(name='distance', placeholder='Distance')
+				.field
+					label Climbing (feet)
+					input(name='climbing', placeholder='Climbing')
+				.field
+					label Time (seconds)
+					input(name='time', placeholder='Time')
+				.field
+					label Count
+					input(name='count', placeholder='Count')
+				.ui.error.message
+		.actions
+			.ui.button.cancel.red Cancel
+			input.ui.button(type='submit', value='Add', form='add-year-form' class='green')
+
+mixin deleteYearModal
+	#delete-year-modal.ui.modal
+		i.close.icon
+		.header
+			| Select year to delete
+		.content
+			form(action='/year/delete' id='delete-year-form' method="POST" class='ui form')
+				.field
+					label Year
+					input(name='year', placeholder='Year')
+				.ui.error.message
+		.actions
+			.ui.button.cancel.red Cancel
+			input.ui.button(type='submit', value='Delete', form='delete-year-form' class='green')

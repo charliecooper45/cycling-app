@@ -29,6 +29,31 @@ block content
 					.label
 						| Year Climbing (ft)
 		.column
-			.ui.segment
-				p
-				p
+			table.ui.table.inverted
+				thead
+					th Year
+					th Distance (mi)
+					th Climbing (ft)
+					th Time
+					th Rides
+				tbody
+					tr
+						td
+							span.ui.ribbon.label.green Current
+							span= stats.year
+						td= stats.year_distance_decimal
+						td= stats.year_climbing
+						td= stats.year_time
+						td= stats.year_count
+					each year in years
+						tr
+							- if (year == years[0])
+								td
+									span.ui.ribbon.label.yellow PR
+									span= year.year
+							- else
+								td= year.year
+							td= year.distance
+							td= year.climbing
+							td= year.time
+							td= year.count

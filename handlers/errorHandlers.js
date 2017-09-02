@@ -10,6 +10,13 @@ exports.notFound = (req, res, next) => {
   next(err);
 };
 
+exports.validationErrors = (err, req, res, next) => {
+  if (!err.errors) return next(err);
+  const errorKeys = Object.keys(err.errors);
+  errorKeys.forEach(key => req.flash('error', err.errors[key].message));
+  res.redirect('/');
+};
+
 exports.errors = (err, req, res, next) => {
   res.status(err.status || 500);
   const errorDetails = {

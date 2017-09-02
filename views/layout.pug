@@ -1,3 +1,5 @@
+include mixins/_yearModals
+
 doctype html
 html
   head
@@ -10,11 +12,40 @@ html
         .ui.container
           a.header.item(href='/') Road Cycling App
           a.header.item(href='/segments' class=(path.startsWith('/segments') ? 'active' : '')) Segments
+          .ui.simple.dropdown.item
+            | Years
+            i.dropdown.icon
+            .menu
+              #add-year.item
+                i.plus.icon.green
+                | Add
+              #delete-year.item
+                i.minus.icon.red
+                | Delete
           a.header.item.right(href='/logout') Logout
 
     .ui.main.container
+      block messages
+        if locals.flashes
+          - const success = flashes['success']
+          - const error = flashes['error']
+          if success
+            .ui.positive.message.home-message
+              i.close.icon
+              .header= success[0]
+          else if error
+            .ui.negative.message.home-message
+              i.close.icon
+              .header
+                | Error
+              each message in error
+                p= message
       block content
+
+    +addYearModal
+    +deleteYearModal
 
     block scripts
       script(src="https://code.jquery.com/jquery-3.2.1.min.js")
       script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
+      script(src="/javascripts/main.js")
