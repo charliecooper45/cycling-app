@@ -1,4 +1,4 @@
-// add year
+// year
 $('#add-year').click(() => {
   $('#add-year-modal').modal('show');
 });
@@ -17,14 +17,40 @@ $('#add-year-form')
 $('#delete-year-form')
   .form({
     fields: {
-      year     : ['exactLength[4]' ,'integer'],
+      year: ['exactLength[4]' ,'integer'],
     }
   });
 
-// delete year
 $('#delete-year').click(() => {
   $('#delete-year-modal').modal('show');
 });
+
+// ftp
+$('#add-ftp').click(() => {
+  $('#add-ftp-modal').modal('show');
+});
+
+$('#add-ftp-form')
+  .form({
+    fields: {
+      day: ['empty', 'maxLength[2]', 'integer'],
+      month: ['empty'],
+      year: ['empty', 'length[4]', 'integer'],
+      ftp: ['empty', 'maxLength[3]', 'integer']
+    }
+  });
+
+$('#delete-ftp-form')
+  .form({
+    fields: {
+      date: ['exactLength[10]'],
+    }
+  });
+
+$('#delete-ftp').click(() => {
+  $('#delete-ftp-modal').modal('show');
+});
+
 
 // messages
 $('.message .close').click((e) => {

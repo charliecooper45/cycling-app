@@ -13,7 +13,7 @@ exports.deleteYear = async (req, res) => {
   if (year) {
     req.flash('success', `Year ${year.year} deleted`);
   } else {
-    req.flash('error', `Year ${year ? year.year : ''} does not exist`);
+    req.flash('error', `Year ${req.body.year ? req.body.year : ''} does not exist`);
   }
   res.redirect('/');
 };

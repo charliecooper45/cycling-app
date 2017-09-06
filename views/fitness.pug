@@ -1,0 +1,66 @@
+extends layout
+
+block content
+	.ui.two.column.centered.grid
+		.ui.statistics.center.aligned
+			.statistic
+				.value= ftps.length > 0 ? ftps[0].value : 'NA'
+				.label
+					| FTP
+			.statistic
+				.value
+					| 21kg
+				.label
+					| Weight
+			.statistic
+				.value
+					| 9.00
+				.label
+					| Watts per kilo
+		.one.column.centered.row
+			.ui.horizontal.segments
+				.fitness-graph.ui.segment
+					canvas#ftp
+				.fitness-table.ui.segment
+					table.ui.table.inverted
+						thead
+							th Date
+							th FTP
+						tbody
+							each ftp in ftps
+								tr
+									td= ftp.date
+									td= ftp.value
+		// TODO
+		//.one.column.centered.row
+		//	.ui.horizontal.segments
+		//		.ui.segment
+		//			canvas#weight
+		//		.ui.segment
+		//			table.ui.table.inverted
+		//				thead
+		//					th Date
+		//					th Weight (KG)
+		//				tbody
+
+block script
+	script.
+		const ftps = !{JSON.stringify(ftps).replace(/<\//g, "<\\/")}.slice(0).reverse()
+		var ctx = document.getElementById("ftp").getContext('2d');
+		new Chart(ctx, {
+			"type": "line",
+			"data": {
+				"labels": ftps.map(function(ftp) { return ftp.date }),
+				"datasets": [{
+					"label": "FTP",
+					"data": ftps.map(function(ftp) { return ftp.value }),
+					"fill": false,
+					"borderColor": "rgb(75, 192, 192)",
+					"lineTension": 0
+				}]
+			},
+			"options":{}
+		});
+
+
+								

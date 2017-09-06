@@ -12,6 +12,7 @@ mongoose.connect(process.env.DATABASE_URL, { useMongoClient: true })
 
 require('./models/Year');
 require('./models/User');
+require('./models/Ftp');
 
 const app = require('./app');
 app.set('port', process.env.PORT || 3000);

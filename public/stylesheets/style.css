@@ -5,3 +5,11 @@ body {
 .main.container {
   margin-top: 7em;
 }
+
+.fitness-graph {
+  width: 60% !important;
+}
+
+.fitness-table {
+  width: 40% !important;
+}

@@ -1,4 +1,5 @@
 include mixins/_yearModals
+include mixins/_ftpModals
 
 doctype html
 html
@@ -12,16 +13,27 @@ html
         .ui.container
           a.header.item(href='/') Road Cycling App
           a.header.item(href='/segments' class=(path.startsWith('/segments') ? 'active' : '')) Segments
+          a.header.item(href='/fitness' class=(path.startsWith('/fitness') ? 'active' : '')) Fitness
           .ui.simple.dropdown.item
-            | Years
+            i.setting.icon
             i.dropdown.icon
             .menu
-              #add-year.item
-                i.plus.icon.green
-                | Add
-              #delete-year.item
-                i.minus.icon.red
-                | Delete
+              .item
+                i.dropdown.icon
+                span.text Year
+                .menu
+                  #add-year.item
+                    i.plus.icon.green
+                  #delete-year.item
+                    i.minus.icon.red
+              .item
+                i.dropdown.icon
+                span.text FTP
+                .menu
+                  #add-ftp.item
+                    i.plus.icon.green
+                  #delete-ftp.item
+                    i.minus.icon.red
           a.header.item.right(href='/logout') Logout
 
     .ui.main.container
@@ -44,8 +56,13 @@ html
 
     +addYearModal
     +deleteYearModal
+    +addFtpModal
+    +deleteFtpModal
 
     block scripts
       script(src="https://code.jquery.com/jquery-3.2.1.min.js")
       script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js")
       script(src="/javascripts/main.js")
+
+    block script
