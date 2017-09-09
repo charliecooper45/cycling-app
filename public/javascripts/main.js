@@ -62,7 +62,7 @@ $('#add-weight-form')
       day: ['empty', 'maxLength[2]', 'integer'],
       month: ['empty'],
       year: ['empty', 'length[4]', 'integer'],
-      weight: ['empty', 'integer']
+      weight: ['empty', 'decimal']
     }
   });
 
