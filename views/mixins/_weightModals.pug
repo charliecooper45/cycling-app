@@ -1,0 +1,51 @@
+mixin addWeightModal
+	#add-weight-modal.ui.modal
+		i.close.icon
+		.header
+			| Enter Weight data below
+		.content
+			form(action='/fitness/weight' id='add-weight-form' method="POST" class='ui form')
+				.three.fields
+					.field
+						label Day
+						input(name='day', placeholder='Day')
+					.field
+						label Month
+						select.ui.fluid.search.dropdown(name='month', placeholder='Month')
+							option(value='1') January
+							option(value='2') February
+							option(value='3') March
+							option(value='4') April
+							option(value='5') May
+							option(value='6') June
+							option(value='7') July
+							option(value='8') August
+							option(value='9') September
+							option(value='10') October
+							option(value='11') November
+							option(value='12') December
+					.field
+						label Year
+						input(type='text', name='year', placeholder='Year')
+				.field
+					label Weight (KG)
+					input(name='weight', placeholder='Weight')
+				.ui.error.message
+		.actions
+			.ui.button.cancel.red Cancel
+			input.ui.button(type='submit', value='Add', form='add-weight-form' class='green')
+
+mixin deleteWeightModal
+	#delete-weight-modal.ui.modal
+		i.close.icon
+		.header
+			| Select Weight to delete
+		.content
+			form(action='/fitness/weight/delete' id='delete-weight-form' method="POST" class='ui form')
+				.field
+					label Date (dd/mm/yyyy)
+					input(name='date', placeholder='Date')
+				.ui.error.message
+		.actions
+			.ui.button.cancel.red Cancel
+			input.ui.button(type='submit', value='Delete', form='delete-weight-form' class='green')

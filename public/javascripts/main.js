@@ -51,6 +51,31 @@ $('#delete-ftp').click(() => {
   $('#delete-ftp-modal').modal('show');
 });
 
+// weight
+$('#add-weight').click(() => {
+  $('#add-weight-modal').modal('show');
+});
+
+$('#add-weight-form')
+  .form({
+    fields: {
+      day: ['empty', 'maxLength[2]', 'integer'],
+      month: ['empty'],
+      year: ['empty', 'length[4]', 'integer'],
+      weight: ['empty', 'integer']
+    }
+  });
+
+$('#delete-weight-form')
+  .form({
+    fields: {
+      date: ['exactLength[10]'],
+    }
+  });
+
+$('#delete-weight').click(() => {
+  $('#delete-weight-modal').modal('show');
+});
 
 // messages
 $('.message .close').click((e) => {

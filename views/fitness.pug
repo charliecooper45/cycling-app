@@ -4,17 +4,15 @@ block content
 	.ui.two.column.centered.grid
 		.ui.statistics.center.aligned
 			.statistic
-				.value= ftps.length > 0 ? ftps[0].value : 'NA'
+				.value= stats.ftp
 				.label
 					| FTP
 			.statistic
-				.value
-					| 21kg
+				.value= stats.weight
 				.label
-					| Weight
+					| Weight (KG)
 			.statistic
-				.value
-					| 9.00
+				.value= stats.wattsPerKilo
 				.label
 					| Watts per kilo
 		.one.column.centered.row
@@ -31,26 +29,29 @@ block content
 								tr
 									td= ftp.date
 									td= ftp.value
-		// TODO
-		//.one.column.centered.row
-		//	.ui.horizontal.segments
-		//		.ui.segment
-		//			canvas#weight
-		//		.ui.segment
-		//			table.ui.table.inverted
-		//				thead
-		//					th Date
-		//					th Weight (KG)
-		//				tbody
+		.one.column.centered.row
+			.ui.horizontal.segments
+				.fitness-graph.ui.segment
+					canvas#weight
+				.fitness-table.ui.segment
+					table.ui.table.inverted
+						thead
+							th Date
+							th Weight (KG)
+						tbody
+							each weight in weights
+								tr
+									td= weight.date
+									td= weight.value
 
 block script
 	script.
 		const ftps = !{JSON.stringify(ftps).replace(/<\//g, "<\\/")}.slice(0).reverse()
-		var ctx = document.getElementById("ftp").getContext('2d');
-		new Chart(ctx, {
+		var ftp = document.getElementById("ftp").getContext('2d');
+		new Chart(ftp, {
 			"type": "line",
 			"data": {
-				"labels": ftps.map(function(ftp) { return ftp.date }),
+				"labels": ftps.map(function(ftp) { return ftp.shortDate }),
 				"datasets": [{
 					"label": "FTP",
 					"data": ftps.map(function(ftp) { return ftp.value }),
@@ -60,6 +61,26 @@ block script
 				}]
 			},
 			"options":{}
+		});
+		const weights = !{JSON.stringify(weights).replace(/<\//g, "<\\/")}.slice(0).reverse()
+		var weight = document.getElementById("weight").getContext('2d');
+		new Chart(weight, {
+			"type": "line",
+			"data": {
+				"labels": weights.map(function (weight) {
+					return weight.shortDate
+				}),
+				"datasets": [{
+					"label": "Weight (KG)",
+					"data": weights.map(function (weight) {
+						return weight.value
+					}),
+					"fill": false,
+					"borderColor": "rgb(75, 192, 192)",
+					"lineTension": 0
+				}]
+			},
+			"options": {}
 		});
 
 

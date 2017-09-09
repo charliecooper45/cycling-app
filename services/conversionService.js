@@ -11,6 +11,10 @@ exports.formatMiles = value => numeral(value).format('0,0.00');
 
 exports.formatFeet = value => numeral(value).format('0,0');
 
+exports.formatWattsPerKilo = value => numeral(value).format('0,0.00');
+
 exports.formatDate = value => moment(value).format('DD MMMM YYYY');
+
+exports.formatShortDate = value => moment(value).format('DD/MM/YY');
 
 exports.formatPercentage = value => numeral(value).format('0.0%');

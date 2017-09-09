@@ -1,5 +1,6 @@
 include mixins/_yearModals
 include mixins/_ftpModals
+include mixins/_weightModals
 
 doctype html
 html
@@ -34,6 +35,14 @@ html
                     i.plus.icon.green
                   #delete-ftp.item
                     i.minus.icon.red
+              .item
+                i.dropdown.icon
+                span.text Weight
+                .menu
+                  #add-weight.item
+                    i.plus.icon.green
+                  #delete-weight.item
+                    i.minus.icon.red
           a.header.item.right(href='/logout') Logout
 
     .ui.main.container
@@ -58,6 +67,8 @@ html
     +deleteYearModal
     +addFtpModal
     +deleteFtpModal
+    +addWeightModal
+    +deleteWeightModal
 
     block scripts
       script(src="https://code.jquery.com/jquery-3.2.1.min.js")

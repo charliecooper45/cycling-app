@@ -17,5 +17,7 @@ router.post('/year', catchErrors(yearController.createYear));
 router.post('/year/delete', catchErrors(yearController.deleteYear));
 router.post('/fitness/ftp', catchErrors(fitnessController.createFtp));
 router.post('/fitness/ftp/delete', catchErrors(fitnessController.deleteFtp));
+router.post('/fitness/weight', catchErrors(fitnessController.createWeight));
+router.post('/fitness/weight/delete', catchErrors(fitnessController.deleteWeight));
 
 module.exports = router;
