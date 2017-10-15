@@ -22,5 +22,3 @@ exports.errors = (err, req, res, next) => {
   };
   return res.render('error', errorDetails);
 };
-
-// TODO: production errors
