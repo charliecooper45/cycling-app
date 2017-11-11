@@ -29,9 +29,9 @@ describe('conversion service', () => {
 
   describe('seconds to duration conversion', () => {
     it('should convert', () => {
-      const moment = conversionService.secondsToDuration(100)
-      assert.equal(moment.minutes(), 1);
-      assert.equal(moment.seconds(), 40);
+      const duration = conversionService.secondsToDuration(100);
+      assert.equal(duration.minutes(), 1);
+      assert.equal(duration.seconds(), 40);
     });
   });
 
@@ -49,11 +49,11 @@ describe('conversion service', () => {
     });
 
     it('should format date', () => {
-      assert.equal(conversionService.formatDate(moment(`1989-09-02`, 'YYYY-MM-DD')), '02 September 1989');
+      assert.equal(conversionService.formatDate(moment('1989-09-02`', 'YYYY-MM-DD')), '02 September 1989');
     });
 
     it('should format short date', () => {
-      assert.equal(conversionService.formatShortDate(moment(`1989-09-02`, 'YYYY-MM-DD')), '02/09/89');
+      assert.equal(conversionService.formatShortDate(moment('1989-09-02', 'YYYY-MM-DD')), '02/09/89');
     });
 
     it('should format percentage', () => {
