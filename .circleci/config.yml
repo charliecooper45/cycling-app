@@ -1,0 +1,53 @@
+version: 2
+jobs:
+  build:
+    docker:
+    - image: circleci/node:8.4.0
+    - image: mongo:latest
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install_npm
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: test
+          command: npm test
+  docker:
+    machine: true
+    steps:
+      - checkout
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - run: docker build -t $DOCKER_USER/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH .
+      - run: docker push $DOCKER_USER/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH
+  deploy:
+    docker:
+    - image: circleci/node:8.4.0
+    steps:
+      - run:
+          name: host_authenticity
+          command: |
+            mkdir ~/.ssh && touch ~/.ssh/known_hosts
+            ssh-keyscan cooperca.uk >> ~/.ssh/known_hosts
+      - run:
+          name: deploy_to_server
+          command: |
+            ssh cooperca.uk "docker pull $DOCKER_USER/$CIRCLE_PROJECT_REPONAME:master; docker rm -f $CIRCLE_PROJECT_REPONAME;
+            docker run -d -e NODE_ENV=production -p 8000:8000 --name $CIRCLE_PROJECT_REPONAME $DOCKER_USER/$CIRCLE_PROJECT_REPONAME:master"
+
+workflows:
+  version: 2
+  build_docker_deploy:
+    jobs:
+      - build
+      - docker:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - docker
