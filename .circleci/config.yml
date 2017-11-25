@@ -38,7 +38,9 @@ jobs:
           name: deploy_to_server
           command: |
             ssh cooperca.uk "docker pull $DOCKER_USER/$CIRCLE_PROJECT_REPONAME:master; docker rm -f $CIRCLE_PROJECT_REPONAME;
-            docker run -d -e NODE_ENV=production -p 8000:8000 --name $CIRCLE_PROJECT_REPONAME $DOCKER_USER/$CIRCLE_PROJECT_REPONAME:master"
+            docker run -d -e NODE_ENV=production -e DATABASE_URL=$DATABASE_URL -e KEY=$KEY -e PORT=$PORT -e SECRET=$SECRET
+            -e STRAVA_ACCESS_TOKEN=$STRAVA_ACCESS_TOKEN -e STRAVA_ATHLETE_ID=$STRAVA_ATHLETE_ID -p 3000:3000
+            --name $CIRCLE_PROJECT_REPONAME $DOCKER_USER/$CIRCLE_PROJECT_REPONAME:master"
 workflows:
   version: 2
   build_publish_deploy:
