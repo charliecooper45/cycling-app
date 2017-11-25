@@ -1,6 +1,7 @@
 # Cycling App
+[![CircleCI](https://circleci.com/gh/charliecooper45/cycling-app.svg?style=shield)](https://circleci.com/gh/charliecooper45/cycling-app)
 
-Simple Node.js app to monitor and report on cycling fitness. Uses the Strava API to pull in data and Semantic UI to display it.
+Node.js app to monitor and report on cycling fitness. Uses the Strava API to pull in data and Semantic UI to display it.
 
   - Weight
   - FTP
