@@ -18,7 +18,7 @@ jobs:
       - run:
           name: test
           command: npm test
-  docker:
+  publish:
     machine: true
     steps:
       - checkout
@@ -39,15 +39,14 @@ jobs:
           command: |
             ssh cooperca.uk "docker pull $DOCKER_USER/$CIRCLE_PROJECT_REPONAME:master; docker rm -f $CIRCLE_PROJECT_REPONAME;
             docker run -d -e NODE_ENV=production -p 8000:8000 --name $CIRCLE_PROJECT_REPONAME $DOCKER_USER/$CIRCLE_PROJECT_REPONAME:master"
-
 workflows:
   version: 2
-  build_docker_deploy:
+  build_publish_deploy:
     jobs:
       - build
-      - docker:
+      - publish:
           requires:
             - build
       - deploy:
           requires:
-            - docker
+            - publish
