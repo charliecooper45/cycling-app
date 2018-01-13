@@ -8,7 +8,8 @@ const Weight = mongoose.model('Weight');
 const mapFtp = ftp => ({
   date: conversionService.formatDate(ftp.date),
   shortDate: conversionService.formatShortDate(ftp.date),
-  value: ftp.value
+  value: ftp.value,
+  test: ftp.test
 });
 
 const mapWeight = weight => ({
@@ -36,9 +37,9 @@ exports.getFitness = async (req, res) => {
 };
 
 exports.createFtp = async (req, res) => {
-  const { day, month, year, ftp } = req.body;
+  const { day, month, year, ftp, test } = req.body;
   const date = moment(`${year}-${month}-${day}`, 'YYYY-MM-DD');
-  await Ftp.findOneAndUpdate({ date }, { date, value: ftp }, { upsert: true });
+  await Ftp.findOneAndUpdate({ date }, { date, value: ftp, test }, { upsert: true });
   req.flash('success', 'FTP added');
   res.redirect('/fitness');
 };

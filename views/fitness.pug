@@ -24,6 +24,7 @@ block content
 						thead
 							th Date
 							th FTP
+							th Test
 						tbody
 							- const ftpLength = ftps.length <= 8 ? ftps.length : 8;
 							- for (let i = 0; i < ftpLength; i++)
@@ -31,6 +32,7 @@ block content
 								tr
 									td= ftp.date
 									td= ftp.value
+									td= ftp.test
 		.one.column.centered.row
 			.ui.horizontal.segments
 				.fitness-graph.ui.segment
@@ -64,7 +66,15 @@ block script
 					"lineTension": 0
 				}]
 			},
-			"options":{}
+			"options": {
+				"legend": {
+					"display": false
+				},
+				"title": {
+					"display": true,
+					"text": 'Functional Threshold Power (FTP)'
+				}
+			}
 		});
 		const weights = !{JSON.stringify(weights).replace(/<\//g, "<\\/")}.slice(0).reverse()
 		var weight = document.getElementById("weight").getContext('2d');
@@ -84,7 +94,15 @@ block script
 					"lineTension": 0
 				}]
 			},
-			"options": {}
+			"options": {
+				"legend": {
+					"display": false
+				},
+				"title": {
+					"display": true,
+					"text": 'Weight (KG)'
+				}
+			}
 		});
 
 

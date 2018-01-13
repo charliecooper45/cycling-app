@@ -1,13 +1,13 @@
 {
   "name": "cycling-app",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
+  "author": "Charlie Cooper",
   "engines": {
     "node": "7.6.0"
   },
   "scripts": {
     "start": "nodemon ./start.js",
-    "deploy": "git push heroku master",
     "user": "node ./scripts/add-user.js",
     "test": "mocha --reporter spec",
     "eslint": "eslint **/*.js"

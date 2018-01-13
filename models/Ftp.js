@@ -9,6 +9,10 @@ const ftpSchema = new mongoose.Schema({
   value: {
     type: Number,
     required: 'Value is required'
+  },
+  test: {
+    type: String,
+    required: 'Test type is required'
   }
 });
 

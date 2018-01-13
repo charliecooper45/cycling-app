@@ -36,7 +36,8 @@ $('#add-ftp-form')
       day: ['empty', 'maxLength[2]', 'integer'],
       month: ['empty'],
       year: ['empty', 'length[4]', 'integer'],
-      ftp: ['empty', 'maxLength[3]', 'integer']
+      ftp: ['empty', 'maxLength[3]', 'integer'],
+      test: ['empty']
     }
   });
 
