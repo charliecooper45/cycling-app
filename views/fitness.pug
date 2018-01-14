@@ -52,58 +52,40 @@ block content
 
 block script
 	script.
-		const ftps = !{JSON.stringify(ftps).replace(/<\//g, "<\\/")}.slice(0).reverse()
-		var ftp = document.getElementById("ftp").getContext('2d');
-		new Chart(ftp, {
-			"type": "line",
-			"data": {
-				"labels": ftps.map(function(ftp) { return ftp.shortDate }),
-				"datasets": [{
-					"label": "FTP",
-					"data": ftps.map(function(ftp) { return ftp.value }),
-					"fill": false,
-					"borderColor": "rgb(75, 192, 192)",
-					"lineTension": 0
-				}]
-			},
-			"options": {
-				"legend": {
-					"display": false
-				},
-				"title": {
-					"display": true,
-					"text": 'Functional Threshold Power (FTP)'
-				}
-			}
-		});
-		const weights = !{JSON.stringify(weights).replace(/<\//g, "<\\/")}.slice(0).reverse()
-		var weight = document.getElementById("weight").getContext('2d');
-		new Chart(weight, {
-			"type": "line",
-			"data": {
-				"labels": weights.map(function (weight) {
-					return weight.shortDate
-				}),
-				"datasets": [{
-					"label": "Weight (KG)",
-					"data": weights.map(function (weight) {
-						return weight.value
+		function chart(values, element, title) {
+			const ctx = document.getElementById(element).getContext('2d');
+			new Chart(ctx, {
+				"type": "line",
+				"data": {
+					"labels": values.map(function (value) {
+						return value.shortDate
 					}),
-					"fill": false,
-					"borderColor": "rgb(75, 192, 192)",
-					"lineTension": 0
-				}]
-			},
-			"options": {
-				"legend": {
-					"display": false
+					"datasets": [{
+						"data": values.map(function (value) {
+							return value.value
+						}),
+						"fill": false,
+						"borderColor": "rgb(75, 192, 192)",
+						"lineTension": 0
+					}]
 				},
-				"title": {
-					"display": true,
-					"text": 'Weight (KG)'
+				"options": {
+					"legend": {
+						"display": false
+					},
+					"title": {
+						"display": true,
+						"text": title
+					}
 				}
-			}
-		});
+			});
+		}
+
+		const ftps = !{JSON.stringify(ftps).replace(/<\//g, "<\\/")}.slice(0).reverse()
+		chart(ftps, 'ftp', 'Functional Threshold Power (FTP)');
+
+		const weights = !{JSON.stringify(weights).replace(/<\//g, "<\\/")}.slice(0).reverse()
+		chart(weights, 'weight', 'Weight (KG)');
 
 
-								
+
