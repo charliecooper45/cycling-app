@@ -27,7 +27,7 @@ $('#delete-year').click(() => {
 
 // ftp
 $('#add-ftp').click(() => {
-  $('#add-ftp-modal').modal('show');
+  createModal('#add-ftp-modal');
 });
 
 $('#add-ftp-form')
@@ -54,7 +54,7 @@ $('#delete-ftp').click(() => {
 
 // weight
 $('#add-weight').click(() => {
-  $('#add-weight-modal').modal('show');
+  createModal('#add-weight-modal');
 });
 
 $('#add-weight-form')
@@ -88,3 +88,12 @@ $('.message .close').click((e) => {
 $('.home-message')
   .delay(5000)
   .fadeOut('slow');
+
+// utils
+function createModal(modalId) {
+  $(modalId).modal('show');
+  const date = new Date();
+  $(`${modalId} #day`).val(date.getDate());
+  $(`${modalId} #month`).val(date.getMonth() + 1);
+  $(`${modalId} #year`).val(date.getFullYear());
+}

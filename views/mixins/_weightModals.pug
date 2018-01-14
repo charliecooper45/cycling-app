@@ -8,10 +8,10 @@ mixin addWeightModal
 				.three.fields
 					.field
 						label Day
-						input(name='day', placeholder='Day')
+						input(id='day', name='day', placeholder='Day')
 					.field
 						label Month
-						select.ui.fluid.search.dropdown(name='month', placeholder='Month')
+						select.ui.fluid.search.dropdown(id='month' name='month', placeholder='Month')
 							option(value='1') January
 							option(value='2') February
 							option(value='3') March
@@ -26,10 +26,10 @@ mixin addWeightModal
 							option(value='12') December
 					.field
 						label Year
-						input(type='text', name='year', placeholder='Year')
+						input(id='year', name='year', placeholder='Year')
 				.field
 					label Weight (KG)
-					input(name='weight', placeholder='Weight')
+					input(name='weight', placeholder='Weight', autofocus)
 				.ui.error.message
 		.actions
 			.ui.button.cancel.red Cancel
