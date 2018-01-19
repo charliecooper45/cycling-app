@@ -4,7 +4,7 @@ mixin addFtpModal
 		.header
 			| Enter FTP data below
 		.content
-			form(action='/fitness/ftp/' id='add-ftp-form' method="POST" class='ui form')
+			form.ui.form(action='/fitness/ftp/' id='add-ftp-form' method='POST')
 				.three.fields
 					.field
 						label Day
@@ -36,7 +36,7 @@ mixin addFtpModal
 				.ui.error.message
 		.actions
 			.ui.button.cancel.red Cancel
-			input.ui.button(type='submit', value='Add', form='add-ftp-form' class='green')
+			input.ui.button.green(type='submit', value='Add', form='add-ftp-form')
 
 mixin deleteFtpModal
 	#delete-ftp-modal.ui.modal
@@ -44,7 +44,7 @@ mixin deleteFtpModal
 		.header
 			| Select FTP to delete
 		.content
-			form(action='/fitness/ftp/delete' id='delete-ftp-form' method="POST" class='ui form')
+			form.ui.form(action='/fitness/ftp/delete' id='delete-ftp-form' method='POST')
 				.field
 					label Date (dd/mm/yyyy)
 					input(name='date', placeholder='Date')

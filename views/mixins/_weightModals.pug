@@ -4,7 +4,7 @@ mixin addWeightModal
 		.header
 			| Enter Weight data below
 		.content
-			form(action='/fitness/weight' id='add-weight-form' method="POST" class='ui form')
+			form.ui.form(action='/fitness/weight' id='add-weight-form' method='POST')
 				.three.fields
 					.field
 						label Day
@@ -33,7 +33,7 @@ mixin addWeightModal
 				.ui.error.message
 		.actions
 			.ui.button.cancel.red Cancel
-			input.ui.button(type='submit', value='Add', form='add-weight-form' class='green')
+			input.ui.button.green(type='submit', value='Add', form='add-weight-form')
 
 mixin deleteWeightModal
 	#delete-weight-modal.ui.modal
@@ -41,11 +41,11 @@ mixin deleteWeightModal
 		.header
 			| Select Weight to delete
 		.content
-			form(action='/fitness/weight/delete' id='delete-weight-form' method="POST" class='ui form')
+			form.ui.form(action='/fitness/weight/delete' id='delete-weight-form' method='POST')
 				.field
 					label Date (dd/mm/yyyy)
 					input(name='date', placeholder='Date')
 				.ui.error.message
 		.actions
 			.ui.button.cancel.red Cancel
-			input.ui.button(type='submit', value='Delete', form='delete-weight-form' class='green')
+			input.ui.button.green(type='submit', value='Delete', form='delete-weight-form')

@@ -55,36 +55,36 @@ block script
 		function chart(values, element, title) {
 			const ctx = document.getElementById(element).getContext('2d');
 			new Chart(ctx, {
-				"type": "line",
-				"data": {
-					"labels": values.map(function (value) {
+				type: 'line',
+				data: {
+					labels: values.map(function (value) {
 						return value.shortDate
 					}),
-					"datasets": [{
-						"data": values.map(function (value) {
+					datasets: [{
+						data: values.map(function (value) {
 							return value.value
 						}),
-						"fill": false,
-						"borderColor": "rgb(75, 192, 192)",
-						"lineTension": 0
+						fill: false,
+						borderColor: 'rgb(75, 192, 192)',
+						lineTension: 0
 					}]
 				},
-				"options": {
-					"legend": {
-						"display": false
+				options: {
+					legend: {
+						display: false
 					},
-					"title": {
-						"display": true,
-						"text": title
+					title: {
+						display: true,
+						text: title
 					}
 				}
 			});
 		}
 
-		const ftps = !{JSON.stringify(ftps).replace(/<\//g, "<\\/")}.slice(0).reverse()
+		const ftps = !{JSON.stringify(ftps).replace(/<\//g, '<\\/')}.slice(0).reverse()
 		chart(ftps, 'ftp', 'Functional Threshold Power (FTP)');
 
-		const weights = !{JSON.stringify(weights).replace(/<\//g, "<\\/")}.slice(0).reverse()
+		const weights = !{JSON.stringify(weights).replace(/<\//g, '<\\/')}.slice(0).reverse()
 		chart(weights, 'weight', 'Weight (KG)');
 
 

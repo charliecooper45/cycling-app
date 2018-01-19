@@ -4,7 +4,7 @@ mixin addYearModal
 		.header
 			| Enter year data below
 		.content
-			form(action='/year/' id='add-year-form' method="POST" class='ui form')
+			form.ui.form(action='/year/' id='add-year-form' method='POST')
 				.field
 					label Year
 					input(name='year', placeholder='Year')
@@ -23,7 +23,7 @@ mixin addYearModal
 				.ui.error.message
 		.actions
 			.ui.button.cancel.red Cancel
-			input.ui.button(type='submit', value='Add', form='add-year-form' class='green')
+			input.ui.button.green(type='submit', value='Add', form='add-year-form')
 
 mixin deleteYearModal
 	#delete-year-modal.ui.modal
@@ -31,11 +31,11 @@ mixin deleteYearModal
 		.header
 			| Select year to delete
 		.content
-			form(action='/year/delete' id='delete-year-form' method="POST" class='ui form')
+			form.ui.form(action='/year/delete' id='delete-year-form' method='POST')
 				.field
 					label Year
 					input(name='year', placeholder='Year')
 				.ui.error.message
 		.actions
 			.ui.button.cancel.red Cancel
-			input.ui.button(type='submit', value='Delete', form='delete-year-form' class='green')
+			input.ui.button.green(type='submit', value='Delete', form='delete-year-form')
