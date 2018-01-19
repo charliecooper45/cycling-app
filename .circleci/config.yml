@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-    - image: circleci/node:8.4.0
+    - image: circleci/node:8.9.4
     - image: mongo:latest
     steps:
       - checkout
@@ -27,7 +27,7 @@ jobs:
       - run: docker push $DOCKER_USER/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH
   deploy:
     docker:
-    - image: circleci/node:8.4.0
+    - image: circleci/node:8.9.4
     steps:
       - run:
           name: host_authenticity

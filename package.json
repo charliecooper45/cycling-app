@@ -4,7 +4,7 @@
   "private": true,
   "author": "Charlie Cooper",
   "engines": {
-    "node": "7.6.0"
+    "node": "8.9.4"
   },
   "scripts": {
     "start": "nodemon ./start.js",
