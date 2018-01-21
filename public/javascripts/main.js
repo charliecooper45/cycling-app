@@ -78,6 +78,29 @@ $('#delete-weight').click(() => {
   $('#delete-weight-modal').modal('show');
 });
 
+// target
+$('#add-target').click(() => {
+  createModal('#add-target-modal');
+});
+
+$('#add-target-form')
+  .form({
+    fields: {
+      year: ['empty', 'exactLength[4]', 'integer'],
+      target: ['empty', 'decimal']
+    }
+  });
+
+$('#delete-target-form')
+  .form({
+    fields: {
+      year: ['exactLength[4]'],
+    }
+  });
+
+$('#delete-target').click(() => {
+  $('#delete-target-modal').modal('show');
+});
 // messages
 $('.message .close').click((e) => {
   $(e.target)

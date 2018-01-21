@@ -57,3 +57,32 @@ block content
 							td= year.climbing
 							td= year.time
 							td= year.count
+	.one.column.stackable.ui.grid.center
+		br
+		canvas#distance
+
+block script
+	script.
+		const values = [];
+		const ctx = document.getElementById('distance').getContext('2d');
+		new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'August', 'Sept', 'Oct', 'Nov', 'Dec'],
+				datasets: [{
+					data: [0, 454, 454*2, 454*3, 454*4, 454*5, 454*6, 454*7, 454*8, 454*9, 454*10, 454*11],
+					fill: false,
+					borderColor: 'rgb(75, 192, 192)',
+					lineTension: 0
+				}]
+			},
+			options: {
+				legend: {
+					display: false
+				},
+				title: {
+					display: true,
+					text: 'Distance'
+				}
+			}
+		});

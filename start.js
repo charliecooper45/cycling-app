@@ -14,6 +14,7 @@ require('./models/Year');
 require('./models/User');
 require('./models/Ftp');
 require('./models/Weight');
+require('./models/Target');
 
 const app = require('./app');
 app.set('port', process.env.PORT || 3000);
