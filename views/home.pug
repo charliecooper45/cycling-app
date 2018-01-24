@@ -63,14 +63,22 @@ block content
 
 block script
 	script.
-		const values = [];
+		const years = ['Start', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		const target = !{JSON.stringify(stats).replace(/<\//g, '<\\/')}.year_target;
+		let targetData = [0];
+		if (target) {
+			const monthlyTarget = (target/12).toFixed(0);
+			for (let i = 1; i <= 12; i++) {
+				targetData[i] = i < 12 ? (i * monthlyTarget) : target;
+			}
+		}
 		const ctx = document.getElementById('distance').getContext('2d');
 		new Chart(ctx, {
 			type: 'line',
 			data: {
-				labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'August', 'Sept', 'Oct', 'Nov', 'Dec'],
+				labels: years,
 				datasets: [{
-					data: [0, 454, 454*2, 454*3, 454*4, 454*5, 454*6, 454*7, 454*8, 454*9, 454*10, 454*11],
+					data: targetData,
 					fill: false,
 					borderColor: 'rgb(75, 192, 192)',
 					lineTension: 0

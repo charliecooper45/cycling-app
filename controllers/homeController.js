@@ -4,8 +4,9 @@ const athletesService = require('../services/athletesService');
 const conversionService = require('../services/conversionService');
 
 const Year = mongoose.model('Year');
+const Target = mongoose.model('Target');
 
-const mapStats = (stats) => {
+const mapStats = (stats, target) => {
   const duration = conversionService.secondsToDuration(stats.ytd_ride_totals.elapsed_time);
   return {
     longest: `${conversionService.metresToMiles(stats.biggest_ride_distance, true)}`,
@@ -17,6 +18,7 @@ const mapStats = (stats) => {
     year_climbing: `${conversionService.metresToFeet(stats.ytd_ride_totals.elevation_gain)}`,
     year_time: `${duration.days()}d ${duration.hours()}h ${duration.minutes()}m`,
     year_count: `${stats.ytd_ride_totals.count}`,
+    year_target: target ? target.target : undefined,
     year: moment().year()
   };
 };
@@ -34,7 +36,7 @@ const mapYears = (year) => {
 
 exports.getHome = async (req, res) => {
   let stats = await athletesService.findAthleteStats();
-  stats = mapStats(stats);
+  stats = mapStats(stats, await Target.findOne({ year: moment().year() }));
 
   let years = await Year.find().sort('-distance').limit(5);
   years = years.map(mapYears);
