@@ -48,8 +48,9 @@ html
                 i.dropdown.icon
                 span.text Target
                 .menu
-                  #add-target.item
-                    i.plus.icon.green
+                  if (new Date().getMonth() === 0)
+                    #add-target.item
+                      i.plus.icon.green
                   #delete-target.item
                     i.minus.icon.red
           a.header.item.right(href='/logout') Logout
