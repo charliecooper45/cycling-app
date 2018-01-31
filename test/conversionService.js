@@ -16,14 +16,19 @@ describe('conversion service', () => {
   });
 
   describe('metres to miles conversion', () => {
-    it('should convert with no decimals', () => {
-      assert.equal(conversionService.metresToMiles(100), 0);
-      assert.equal(conversionService.metresToMiles(5891), 4);
+    it('should convert with no format and no decimals', () => {
+      assert.equal(conversionService.metresToMiles(7724861), 4800.004604431);
+      assert.equal(conversionService.metresToMiles(5955304), 3700.453201784);
     });
 
-    it('should convert with decimals', () => {
-      assert.equal(conversionService.metresToMiles(8998, true), 5.59);
-      assert.equal(conversionService.metresToMiles(100, true), 0.06);
+    it('should convert with format and no decimals', () => {
+      assert.equal(conversionService.metresToMiles(100, true), 0);
+      assert.equal(conversionService.metresToMiles(5891, true), 4);
+    });
+
+    it('should convert with format and decimals', () => {
+      assert.equal(conversionService.metresToMiles(8998, true, true), 5.59);
+      assert.equal(conversionService.metresToMiles(100, true, true), 0.06);
     });
   });
 

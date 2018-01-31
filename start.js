@@ -16,6 +16,9 @@ require('./models/Ftp');
 require('./models/Weight');
 require('./models/Target');
 
+const targetValueService = require('./services/targetValueService');
+targetValueService.fetchTotal();
+
 const app = require('./app');
 app.set('port', process.env.PORT || 3000);
 const server = app.listen(app.get('port'), () => {

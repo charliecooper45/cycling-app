@@ -6,6 +6,7 @@
   },
   "rules": {
     "no-console": 0,
-    "comma-dangle": ["error", {"functions": "ignore"}]
+    "comma-dangle": ["error", {"functions": "ignore"}],
+    "max-len": ["error", 125]
   }
 }

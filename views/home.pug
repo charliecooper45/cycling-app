@@ -65,6 +65,7 @@ block script
 	script.
 		const years = ['Start', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		const target = !{JSON.stringify(stats).replace(/<\//g, '<\\/')}.year_target;
+		const values = !{JSON.stringify(stats).replace(/<\//g, '<\\/')}.year_values;
 		let targetData = [0];
 		if (target) {
 			const monthlyTarget = (target/12).toFixed(0);
@@ -81,6 +82,11 @@ block script
 					data: targetData,
 					fill: false,
 					borderColor: 'rgb(75, 192, 192)',
+					lineTension: 0
+				}, {
+					data: values,
+					fill: false,
+					borderColor: 'rgb(210, 43, 43)',
 					lineTension: 0
 				}]
 			},

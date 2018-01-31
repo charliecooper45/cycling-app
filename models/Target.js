@@ -10,6 +10,9 @@ const targetSchema = new mongoose.Schema({
     type: Number,
     required: 'Target is required'
   },
+  values: {
+    type: [Number]
+  }
 });
 
 module.exports = mongoose.model('Target', targetSchema);

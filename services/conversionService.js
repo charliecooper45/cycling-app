@@ -3,7 +3,10 @@ const moment = require('moment');
 
 exports.metresToFeet = (value, decimals) => numeral(value * 3.2808).format(decimals ? '0,0.00' : '0,0');
 
-exports.metresToMiles = (value, decimals) => numeral(value * 0.00062137).format(decimals ? '0,0.00' : '0,0');
+exports.metresToMiles = (value, format, decimals) => {
+  const miles = value * 0.000621371;
+  return format ? numeral(miles).format(decimals ? '0,0.00' : '0,0') : miles;
+};
 
 exports.secondsToDuration = value => moment.duration(value, 'seconds');
 

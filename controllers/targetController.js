@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 const moment = require('moment');
+
 const Target = mongoose.model('Target');
 
 exports.createTarget = async (req, res) => {
   if (moment().month() === 0) {
-    await Target.findOneAndUpdate({year: req.body.year}, {target: req.body.target}, {upsert: true});
+    await Target.findOneAndUpdate({ year: req.body.year }, { target: req.body.target, values: [0] }, { upsert: true });
     req.flash('success', 'Target added');
   } else {
-    req.flash('error', `Target can only be created in January`);
+    req.flash('error', 'Target can only be created in January');
   }
   res.redirect('/');
 };
