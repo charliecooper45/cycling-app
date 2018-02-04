@@ -57,9 +57,13 @@ block content
               td= year.climbing
               td= year.time
               td= year.count
-  .one.column.stackable.ui.grid.center
-    br
-    canvas#distance
+  br
+  br
+  .one.column.centered.row
+    .ui.horizontal.segment
+      i#refresh-target.refresh.icon.link.green
+      i#refresh-target-loading.notched.circle.loading.icon(style='display: none')
+      canvas#distance
 
 block script
   script.

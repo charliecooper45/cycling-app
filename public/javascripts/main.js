@@ -1,3 +1,13 @@
+// home
+$('#refresh-target').click(() => {
+  $('#refresh-target').hide();
+  $('#refresh-target-loading').show();
+  $.get('/target/refresh')
+    .always(() => {
+      location.reload(true);
+    });
+});
+
 // year
 $('#add-year').click(() => {
   $('#add-year-modal').modal('show');

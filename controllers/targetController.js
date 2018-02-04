@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const moment = require('moment');
+const targetValueService = require('../services/targetValueService');
 
 const Target = mongoose.model('Target');
 
@@ -21,4 +22,15 @@ exports.deleteTarget = async (req, res) => {
     req.flash('error', `Target for year ${req.body.year ? req.body.year : ''} does not exist`);
   }
   res.redirect('/');
+};
+
+exports.refreshTargetValues = async (req, res) => {
+  try {
+    await targetValueService.fetchTotal();
+    req.flash('success', 'Target values updated');
+    res.sendStatus(200);
+  } catch (error) {
+    req.flash('error', 'Error updating target values');
+    res.sendStatus(500);
+  }
 };

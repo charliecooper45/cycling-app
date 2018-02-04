@@ -12,6 +12,7 @@ router.get('/segments', authController.isLoggedIn, catchErrors(segmentController
 router.get('/fitness', authController.isLoggedIn, catchErrors(fitnessController.getFitness));
 router.get('/login', authController.loginForm);
 router.get('/logout', authController.isLoggedIn, authController.logout);
+router.get('/target/refresh', authController.isLoggedIn, targetController.refreshTargetValues);
 
 router.post('/login', authController.login);
 router.post('/year', catchErrors(yearController.createYear));
