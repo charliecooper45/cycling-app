@@ -1,33 +1,33 @@
 mixin addTargetModal
-	#add-target-modal.ui.modal
-		i.close.icon
-		.header
-			| Enter Target data below
-		.content
-			form.ui.form(action='/target' id='add-target-form' method='POST')
-				.one.fields
-					.field
-						label Year
-						input(id='year', type='text', name='year', placeholder='Year')
-				.field
-					label Target (miles)
-					input(name='target', placeholder='Target', autofocus)
-				.ui.error.message
-		.actions
-			.ui.button.cancel.red Cancel
-			input.ui.button.green(type='submit', value='Add', form='add-target-form')
+  #add-target-modal.ui.modal
+    i.close.icon
+    .header
+      | Enter Target data below
+    .content
+      form.ui.form(action='/target' id='add-target-form' method='POST')
+        .one.fields
+          .field
+            label Year
+            input(id='year', type='text', name='year', placeholder='Year')
+        .field
+          label Target (miles)
+          input(name='target', placeholder='Target', autofocus)
+        .ui.error.message
+    .actions
+      .ui.button.cancel.red Cancel
+      input.ui.button.green(type='submit', value='Add', form='add-target-form')
 
 mixin deleteTargetModal
-	#delete-target-modal.ui.modal
-		i.close.icon
-		.header
-			| Select Target to delete
-		.content
-			form.ui.form(action='/target/delete' id='delete-target-form' method='POST')
-				.field
-					label Year
-					input(name='year', placeholder='Year')
-				.ui.error.message
-		.actions
-			.ui.button.cancel.red Cancel
-			input.ui.button(type='submit', value='Delete', form='delete-target-form' class='green')
+  #delete-target-modal.ui.modal
+    i.close.icon
+    .header
+      | Select Target to delete
+    .content
+      form.ui.form(action='/target/delete' id='delete-target-form' method='POST')
+        .field
+          label Year
+          input(name='year', placeholder='Year')
+        .ui.error.message
+    .actions
+      .ui.button.cancel.red Cancel
+      input.ui.button(type='submit', value='Delete', form='delete-target-form' class='green')

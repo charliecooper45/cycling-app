@@ -1,91 +1,91 @@
 extends layout
 
 block content
-	.ui.two.column.centered.grid
-		.ui.statistics.center.aligned
-			.statistic
-				.value= stats.ftp
-				.label
-					| FTP
-			.statistic
-				.value= stats.weight
-				.label
-					| Weight (KG)
-			.statistic
-				.value= stats.wattsPerKilo
-				.label
-					| Watts per kilo
-		.one.column.centered.row
-			.ui.horizontal.segments
-				.fitness-graph.ui.segment
-					canvas#ftp
-				.fitness-table.ui.segment
-					table.ui.table.inverted
-						thead
-							th Date
-							th FTP
-							th Test
-						tbody
-							- const ftpLength = ftps.length <= 8 ? ftps.length : 8;
-							- for (let i = 0; i < ftpLength; i++)
-								- const ftp = ftps[i]
-								tr
-									td= ftp.date
-									td= ftp.value
-									td= ftp.test
-		.one.column.centered.row
-			.ui.horizontal.segments
-				.fitness-graph.ui.segment
-					canvas#weight
-				.fitness-table.ui.segment
-					table.ui.table.inverted
-						thead
-							th Date
-							th Weight (KG)
-						tbody
-							- const weightLength = weights.length <= 8 ? weights.length : 8;
-							- for (let i = 0; i < weightLength; i++)
-								- const weight = weights[i]
-								tr
-									td= weight.date
-									td= weight.value
+  .ui.two.column.centered.grid
+    .ui.statistics.center.aligned
+      .statistic
+        .value= stats.ftp
+        .label
+          | FTP
+      .statistic
+        .value= stats.weight
+        .label
+          | Weight (KG)
+      .statistic
+        .value= stats.wattsPerKilo
+        .label
+          | Watts per kilo
+    .one.column.centered.row
+      .ui.horizontal.segments
+        .fitness-graph.ui.segment
+          canvas#ftp
+        .fitness-table.ui.segment
+          table.ui.table.inverted
+            thead
+              th Date
+              th FTP
+              th Test
+            tbody
+              - const ftpLength = ftps.length <= 8 ? ftps.length : 8;
+              - for (let i = 0; i < ftpLength; i++)
+                - const ftp = ftps[i]
+                tr
+                  td= ftp.date
+                  td= ftp.value
+                  td= ftp.test
+    .one.column.centered.row
+      .ui.horizontal.segments
+        .fitness-graph.ui.segment
+          canvas#weight
+        .fitness-table.ui.segment
+          table.ui.table.inverted
+            thead
+              th Date
+              th Weight (KG)
+            tbody
+              - const weightLength = weights.length <= 8 ? weights.length : 8;
+              - for (let i = 0; i < weightLength; i++)
+                - const weight = weights[i]
+                tr
+                  td= weight.date
+                  td= weight.value
 
 block script
-	script.
-		function chart(values, element, title) {
-			const ctx = document.getElementById(element).getContext('2d');
-			new Chart(ctx, {
-				type: 'line',
-				data: {
-					labels: values.map(function (value) {
-						return value.shortDate
-					}),
-					datasets: [{
-						data: values.map(function (value) {
-							return value.value
-						}),
-						fill: false,
-						borderColor: 'rgb(75, 192, 192)',
-						lineTension: 0
-					}]
-				},
-				options: {
-					legend: {
-						display: false
-					},
-					title: {
-						display: true,
-						text: title
-					}
-				}
-			});
-		}
+  script.
+    function chart(values, element, title) {
+      const ctx = document.getElementById(element).getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: values.map(function (value) {
+            return value.shortDate
+          }),
+          datasets: [{
+            data: values.map(function (value) {
+              return value.value
+            }),
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            lineTension: 0
+          }]
+        },
+        options: {
+          legend: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: title
+          }
+        }
+      });
+    }
 
-		const ftps = !{JSON.stringify(ftps).replace(/<\//g, '<\\/')}.slice(0).reverse()
-		chart(ftps, 'ftp', 'Functional Threshold Power (FTP)');
+    const ftps = !{JSON.stringify(ftps).replace(/<\//g, '<\\/')}.slice(0).reverse()
+    chart(ftps, 'ftp', 'Functional Threshold Power (FTP)');
 
-		const weights = !{JSON.stringify(weights).replace(/<\//g, '<\\/')}.slice(0).reverse()
-		chart(weights, 'weight', 'Weight (KG)');
+    const weights = !{JSON.stringify(weights).replace(/<\//g, '<\\/')}.slice(0).reverse()
+    chart(weights, 'weight', 'Weight (KG)');
 
 
 

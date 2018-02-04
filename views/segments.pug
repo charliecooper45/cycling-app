@@ -1,18 +1,18 @@
 extends layout
 
 block content
-	each segment in segments
-		.ui.raised.very.padded.text.container.segment
-			h2= segment.title
-			div= `${segment.count} | ${segment.distance} | ${segment.avg} | ${segment.max}`
-			table.ui.striped.table
-				tbody
-					each effort in segment.efforts
-						tr
-							- if (effort == segment.efforts[0])
-								td
-									span.ui.ribbon.label.yellow PR
-									span= effort.date
-							- else
-								td= effort.date
-							td= effort.time
+  each segment in segments
+    .ui.raised.very.padded.text.container.segment
+      h2= segment.title
+      div= `${segment.count} | ${segment.distance} | ${segment.avg} | ${segment.max}`
+      table.ui.striped.table
+        tbody
+          each effort in segment.efforts
+            tr
+              - if (effort == segment.efforts[0])
+                td
+                  span.ui.ribbon.label.yellow PR
+                  span= effort.date
+              - else
+                td= effort.date
+              td= effort.time

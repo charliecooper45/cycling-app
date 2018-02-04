@@ -1,54 +1,54 @@
 mixin addFtpModal
-	#add-ftp-modal.ui.modal
-		i.close.icon
-		.header
-			| Enter FTP data below
-		.content
-			form.ui.form(action='/fitness/ftp/' id='add-ftp-form' method='POST')
-				.three.fields
-					.field
-						label Day
-						input(id='day', name='day', placeholder='Day')
-					.field
-						label Month
-						select.ui.fluid.search.dropdown(id='month', name='month', placeholder='Month')
-							option(value='1') January
-							option(value='2') February
-							option(value='3') March
-							option(value='4') April
-							option(value='5') May
-							option(value='6') June
-							option(value='7') July
-							option(value='8') August
-							option(value='9') September
-							option(value='10') October
-							option(value='11') November
-							option(value='12') December
-					.field
-						label Year
-						input(id='year', type='text', name='year', placeholder='Year')
-				.field
-					label FTP
-					input(name='ftp', placeholder='FTP', autofocus)
-				.field
-					label Test
-					input(name='test', placeholder='Test')
-				.ui.error.message
-		.actions
-			.ui.button.cancel.red Cancel
-			input.ui.button.green(type='submit', value='Add', form='add-ftp-form')
+  #add-ftp-modal.ui.modal
+    i.close.icon
+    .header
+      | Enter FTP data below
+    .content
+      form.ui.form(action='/fitness/ftp/' id='add-ftp-form' method='POST')
+        .three.fields
+          .field
+            label Day
+            input(id='day', name='day', placeholder='Day')
+          .field
+            label Month
+            select.ui.fluid.search.dropdown(id='month', name='month', placeholder='Month')
+              option(value='1') January
+              option(value='2') February
+              option(value='3') March
+              option(value='4') April
+              option(value='5') May
+              option(value='6') June
+              option(value='7') July
+              option(value='8') August
+              option(value='9') September
+              option(value='10') October
+              option(value='11') November
+              option(value='12') December
+          .field
+            label Year
+            input(id='year', type='text', name='year', placeholder='Year')
+        .field
+          label FTP
+          input(name='ftp', placeholder='FTP', autofocus)
+        .field
+          label Test
+          input(name='test', placeholder='Test')
+        .ui.error.message
+    .actions
+      .ui.button.cancel.red Cancel
+      input.ui.button.green(type='submit', value='Add', form='add-ftp-form')
 
 mixin deleteFtpModal
-	#delete-ftp-modal.ui.modal
-		i.close.icon
-		.header
-			| Select FTP to delete
-		.content
-			form.ui.form(action='/fitness/ftp/delete' id='delete-ftp-form' method='POST')
-				.field
-					label Date (dd/mm/yyyy)
-					input(name='date', placeholder='Date')
-				.ui.error.message
-		.actions
-			.ui.button.cancel.red Cancel
-			input.ui.button(type='submit', value='Delete', form='delete-ftp-form' class='green')
+  #delete-ftp-modal.ui.modal
+    i.close.icon
+    .header
+      | Select FTP to delete
+    .content
+      form.ui.form(action='/fitness/ftp/delete' id='delete-ftp-form' method='POST')
+        .field
+          label Date (dd/mm/yyyy)
+          input(name='date', placeholder='Date')
+        .ui.error.message
+    .actions
+      .ui.button.cancel.red Cancel
+      input.ui.button(type='submit', value='Delete', form='delete-ftp-form' class='green')

@@ -1,102 +1,102 @@
 extends layout
 
 block content
-	.two.column.stackable.ui.grid.center
-		.column
-			.ui.two.statistics
-				.statistic
-					.value= stats.longest
-					.label
-						| Longest (mi)
-				.statistic
-					.value= stats.highest
-					.label
-						| Highest (ft)
-				.statistic
-					.value= stats.total_distance
-					.label
-						| Total Distance (mi)
-				.statistic
-					.value= stats.total_climbing
-					.label
-						| Total Climbing (ft)
-				.statistic
-					.value= stats.year_distance
-					.label
-						| Year Distance (mi)
-				.statistic
-					.value= stats.year_climbing
-					.label
-						| Year Climbing (ft)
-		.column
-			table.ui.table.inverted
-				thead
-					th Year
-					th Distance (mi)
-					th Climbing (ft)
-					th Time
-					th Rides
-				tbody
-					tr
-						td
-							span.ui.ribbon.label.green Current
-							span= stats.year
-						td= stats.year_distance_decimal
-						td= stats.year_climbing
-						td= stats.year_time
-						td= stats.year_count
-					each year in years
-						tr
-							- if (year == years[0])
-								td
-									span.ui.ribbon.label.yellow PR
-									span= year.year
-							- else
-								td= year.year
-							td= year.distance
-							td= year.climbing
-							td= year.time
-							td= year.count
-	.one.column.stackable.ui.grid.center
-		br
-		canvas#distance
+  .two.column.stackable.ui.grid.center
+    .column
+      .ui.two.statistics
+        .statistic
+          .value= stats.longest
+          .label
+            | Longest (mi)
+        .statistic
+          .value= stats.highest
+          .label
+            | Highest (ft)
+        .statistic
+          .value= stats.total_distance
+          .label
+            | Total Distance (mi)
+        .statistic
+          .value= stats.total_climbing
+          .label
+            | Total Climbing (ft)
+        .statistic
+          .value= stats.year_distance
+          .label
+            | Year Distance (mi)
+        .statistic
+          .value= stats.year_climbing
+          .label
+            | Year Climbing (ft)
+    .column
+      table.ui.table.inverted
+        thead
+          th Year
+          th Distance (mi)
+          th Climbing (ft)
+          th Time
+          th Rides
+        tbody
+          tr
+            td
+              span.ui.ribbon.label.green Current
+              span= stats.year
+            td= stats.year_distance_decimal
+            td= stats.year_climbing
+            td= stats.year_time
+            td= stats.year_count
+          each year in years
+            tr
+              - if (year == years[0])
+                td
+                  span.ui.ribbon.label.yellow PR
+                  span= year.year
+              - else
+                td= year.year
+              td= year.distance
+              td= year.climbing
+              td= year.time
+              td= year.count
+  .one.column.stackable.ui.grid.center
+    br
+    canvas#distance
 
 block script
-	script.
-		const years = ['Start', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-		const target = !{JSON.stringify(stats).replace(/<\//g, '<\\/')}.year_target;
-		const values = !{JSON.stringify(stats).replace(/<\//g, '<\\/')}.year_values;
-		let targetData = [0];
-		if (target) {
-			const monthlyTarget = (target/12).toFixed(0);
-			for (let i = 1; i <= 12; i++) {
-				targetData[i] = i < 12 ? (i * monthlyTarget) : target;
-			}
-		}
-		const ctx = document.getElementById('distance').getContext('2d');
-		new Chart(ctx, {
-			type: 'line',
-			data: {
-				labels: years,
-				datasets: [{
-					data: targetData,
-					fill: false,
-					borderColor: 'rgb(75, 192, 192)',
-					lineTension: 0
-				}, {
-					data: values,
-					fill: false,
-					borderColor: 'rgb(210, 43, 43)',
-					lineTension: 0
-				}]
-			},
-			options: {
-				legend: {
-					display: false
-				},
-				title: {
-					display: true,
-					text: 'Distance'
-				}
-			}
-		});
+  script.
+    const years = ['Start', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const target = !{JSON.stringify(stats).replace(/<\//g, '<\\/')}.year_target;
+    const values = !{JSON.stringify(stats).replace(/<\//g, '<\\/')}.year_values;
+    let targetData = [0];
+    if (target) {
+      const monthlyTarget = (target / 12).toFixed(0);
+      for (let i = 1; i <= 12; i++) {
+        targetData[i] = i < 12 ? (i * monthlyTarget) : target;
+      }
+    }
+    const ctx = document.getElementById('distance').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: years,
+        datasets: [{
+          data: targetData,
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          lineTension: 0
+        }, {
+          data: values,
+          fill: false,
+          borderColor: 'rgb(210, 43, 43)',
+          lineTension: 0
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Distance'
+        }
+      }
+    });
