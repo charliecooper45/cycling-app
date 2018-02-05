@@ -1,15 +1,23 @@
 body {
-  background-color: #DADADA !important;
+  background-color: #DADADA;
 }
 
 .main.container {
   margin-top: 7em;
 }
 
-.fitness-graph {
-  width: 60% !important;
+.ui.segments>.segment.fitness-graph {
+  width: 60%;
 }
 
-.fitness-table {
-  width: 40% !important;
+.ui.segments>.segment.fitness-table {
+  width: 40%;
+}
+
+.ui.message .list:not(.ui) li {
+  margin: 0 0 .3em 0;
+}
+
+.ui.message .list:not(.ui) li::before {
+  display: none;
 }
