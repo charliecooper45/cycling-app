@@ -7,6 +7,7 @@ Node.js app to monitor and report on cycling fitness. Uses the Strava API to pul
   - FTP
   - Miles/elevation per year
   - Segment times
+  - Progress against yearly target
 
 ## Screenshots
 [![Screenshot_2017-11-04_10.17.04.png](https://s20.postimg.org/f16ga9jkt/Screenshot_2017-11-04_10.17.04.png)](https://postimg.org/image/mh5pw27a1/)
