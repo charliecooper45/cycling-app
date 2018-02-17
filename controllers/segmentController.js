@@ -12,9 +12,10 @@ const mapEffort = (effort) => {
 const mapSegment = async (segment) => {
   const efforts = await segmentService.findSegmentEfforts(segment.id);
   const effortCount = await segmentService.findSegment(segment.id);
+  const distance = conversionService.metresToMiles(segment.distance, true, true);
   return {
     title: segment.name,
-    distance: `${(conversionService.metresToMiles(segment.distance, true))} miles`,
+    distance: `${distance} ${distance > 1 ? 'miles' : 'mile'}`,
     avg: conversionService.formatPercentage(segment.average_grade / 100),
     max: conversionService.formatPercentage(segment.maximum_grade / 100),
     count: `${effortCount.athlete_segment_stats.effort_count} efforts`,
