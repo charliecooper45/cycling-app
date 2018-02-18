@@ -10,11 +10,10 @@ describe('GET /login', () => {
   });
 });
 
-describe('GET /logout', () => {
-  it('should return 302 FOUND', (done) => {
+describe('GET /fitness', () => {
+  it('should return 401 UNAUTHORISED', (done) => {
     request(app)
-      .get('/')
-      .expect('Location', '/login')
-      .expect(302, done);
+      .get('/fitness')
+      .expect(401, done);
   });
 });
