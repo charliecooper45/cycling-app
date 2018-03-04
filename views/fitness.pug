@@ -2,19 +2,20 @@ extends layout
 
 block content
   .ui.two.column.centered.grid
-    .ui.statistics.center.aligned
-      .statistic
-        .value= stats.ftp
-        .label
-          | FTP
-      .statistic
-        .value= stats.weight
-        .label
-          | Weight (KG)
-      .statistic
-        .value= stats.wattsPerKilo
-        .label
-          | Watts per kilo
+    .ui.inverted.segment#fitness-stats
+      .ui.statistics.center.aligned
+        .statistic
+          .value= stats.ftp
+          .label
+            | FTP
+        .statistic
+          .value= stats.weight
+          .label
+            | Weight (KG)
+        .statistic
+          .value= stats.wattsPerKilo
+          .label
+            | Watts per kilo
     .one.column.centered.row
       .ui.horizontal.segments
         .fitness-graph.ui.segment
