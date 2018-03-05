@@ -7,9 +7,9 @@ block messages
 block content
   .ui.middle.aligned.center.aligned.grid
     .column
-      h2.ui.teal.header
+      h1.ui.teal.header
         | Road Cycling
-      form.ui.large.form(action='/login', method='POST')
+      form.ui.large.form#login-form(action='/login', method='POST')
         .ui.stacked.segment
           .field
             .ui.left.icon.input
@@ -19,6 +19,7 @@ block content
             .ui.left.icon.input
               i.lock.icon
               input(type='password', name='password', placeholder='Password')
+          br
           input.ui.fluid.large.teal.button(type='submit' value='Log In')
       - const error = locals.flashes['error'] != undefined ? locals.flashes['error'][0] : undefined
       if error

@@ -3,6 +3,10 @@ body {
   background-size: cover;
 }
 
+#login-form>div {
+  background: rgba(0, 0, 0, 0.7);
+}
+
 .main.container {
   margin-top: 7em;
 }
