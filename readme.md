@@ -12,5 +12,5 @@ Node.js app to monitor and report on cycling fitness. Uses the Strava API to pul
 ## Screenshots
 
 ![home](screenshots/home.png)
-![segments](screenshots/home.png)
+![segments](screenshots/segments.png)
 ![fitness](screenshots/fitness.png)
